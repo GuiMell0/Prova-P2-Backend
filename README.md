@@ -1,178 +1,233 @@
-# 📖 Sobre o Projeto
-# Sistema web desenvolvido com Laravel que permite criar, listar, editar e excluir categorias.
-# Utiliza Docker para PHP, MySQL e Nginx.
+# 📖 Sistema Laravel CRUD de Categorias
 
-# ✨ Funcionalidades
-# - Criar nova categoria
-# - Listar categorias
-# - Editar categoria
-# - Excluir categoria
-# - Validação de dados
+Sistema web desenvolvido com **Laravel** que permite **criar**,
+**listar**, **editar** e **excluir** categorias.\
+A aplicação utiliza **Docker** para facilitar a configuração do ambiente
+de desenvolvimento, incluindo **PHP**, **MySQL** e **Nginx**.
 
-# 🛠️ Tecnologias Utilizadas
-# Backend:
-#   Laravel 11.x
-#   PHP 8.2
-#   MySQL 8.0
-#   Eloquent ORM
-#
-# Frontend:
-#   Blade
-#   CSS3
-#   HTML5
-#
-# DevOps:
-#   Docker
-#   Docker Compose
-#   Nginx
+------------------------------------------------------------------------
 
-# 📋 Pré-requisitos
-# - Docker Desktop 20.10+
-# - Composer (opcional)
+## ✨ Funcionalidades
 
+-   ✅ Criar nova categoria\
+-   ✅ Listar todas as categorias\
+-   ✅ Editar categoria existente\
+-   ✅ Excluir categoria\
+-   ✅ Validação de dados
 
-# -------------------------------------------------------
-# 🚀 COMO EXECUTAR O PROJETO
-# -------------------------------------------------------
+------------------------------------------------------------------------
 
-# 1️⃣ Clone o repositório
+## 🛠️ Tecnologias Utilizadas
+
+### **Backend**
+
+-   Laravel **11.x**
+-   PHP **8.2**
+-   MySQL **8.0**
+-   Eloquent ORM
+
+### **Frontend**
+
+-   Blade Templates
+-   HTML5
+-   CSS3
+
+### **DevOps**
+
+-   Docker
+-   Docker Compose
+-   Nginx
+
+------------------------------------------------------------------------
+
+## 📋 Pré-requisitos
+
+Antes de iniciar, é necessário ter instalado:
+
+-   **Docker Desktop** (20.10 ou superior)
+-   **Composer** (opcional, apenas se quiser rodar sem Docker)
+
+------------------------------------------------------------------------
+
+## 🚀 Como Executar o Projeto
+
+### **Clone o repositório**
+
+``` bash
 git clone https://github.com/seu-usuario/laravel-crud-categorias.git
 cd laravel
+```
 
-# 2️⃣ Configure o arquivo .env
-# O arquivo já está configurado, mas as variáveis importantes são:
-# DB_CONNECTION=mysql
-# DB_HOST=db
-# DB_PORT=3306
-# DB_DATABASE=laravel
-# DB_USERNAME=laravel
-# DB_PASSWORD=laravel
+### **Configure o arquivo `.env`**
 
-# 3️⃣ Suba os containers Docker
+O projeto já inclui um `.env` configurado. Verifique os dados do banco:
+
+``` env
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=laravel
+DB_PASSWORD=laravel
+```
+
+### **Suba os containers Docker**
+
+``` bash
 docker-compose up -d
+```
 
-# 4️⃣ Instale dependências
+### **Instale as dependências**
+
+``` bash
 docker-compose exec app composer install
+```
 
-# 5️⃣ Gere chave da aplicação
+### **Gere a chave da aplicação**
+
+``` bash
 docker-compose exec app php artisan key:generate
+```
 
-# 6️⃣ Execute as migrations
+### **Execute as migrations**
+
+``` bash
 docker-compose exec app php artisan migrate
+```
 
-# 7️⃣ Configure permissões
+### **Configure permissões**
+
+``` bash
 docker-compose exec app chmod -R 777 storage bootstrap/cache
+```
 
-# 9️⃣ Acesse no navegador:
-# http://localhost:8000/categorias
+### **Acesse a aplicação**
 
+👉 http://localhost:8000/categorias
 
+------------------------------------------------------------------------
 
-# -------------------------------------------------------
-# 📂 ESTRUTURA DO PROJETO
-# -------------------------------------------------------
-# (representação em texto)
-#
-# laravel/
-# ├── app/
-# │   ├── Http/Controllers/CategoriaController.php
-# │   └── Models/Categoria.php
-# ├── bootstrap/
-# ├── config/
-# ├── database/migrations/xxxx_create_categorias_table.php
-# ├── public/css/{style.css, form.css}
-# ├── resources/
-# │   ├── css/{style.css, form.css}
-# │   └── views/categorias/{index.blade.php, create.blade.php, edit.blade.php}
-# ├── routes/web.php
-# ├── storage/
-# ├── tests/
-# ├── vendor/
-# ├── docker-compose.yml
-# ├── dockerfile
-# ├── nginx.conf
-# ├── .env
-# └── README.md
+## 📂 Estrutura do Projeto
 
+    laravel/
+    ├── app/
+    │   ├── Http/
+    │   │   └── Controllers/
+    │   │       └── CategoriaController.php
+    │   └── Models/
+    │       └── Categoria.php
+    │
+    ├── bootstrap/
+    ├── config/
+    │
+    ├── database/
+    │   └── migrations/
+    │       └── xxxx_create_categorias_table.php
+    │
+    ├── public/
+    │   └── css/
+    │       ├── style.css
+    │       └── form.css
+    │
+    ├── resources/
+    │   ├── css/
+    │   │   ├── style.css
+    │   │   └── form.css
+    │   └── views/
+    │       └── categorias/
+    │           ├── index.blade.php
+    │           ├── create.blade.php
+    │           └── edit.blade.php
+    │
+    ├── routes/
+    │   └── web.php
+    │
+    ├── docker-compose.yml
+    ├── dockerfile
+    ├── nginx.conf
+    ├── .env
+    └── README.md
 
+------------------------------------------------------------------------
 
-# -------------------------------------------------------
-# 🗄️ Estrutura do Banco de Dados
-# -------------------------------------------------------
-# Tabela: categorias
-# id          BIGINT     PK AUTO_INCREMENT
-# nome        VARCHAR(255)  NOT NULL
-# descricao   TEXT
-# created_at  TIMESTAMP
-# updated_at  TIMESTAMP
+## 🗄️ Estrutura do Banco de Dados
 
+**Tabela: categorias**
 
+  Campo        Tipo           Descrição
+  ------------ -------------- ---------------------------------
+  id           BIGINT         Chave primária, auto incremento
+  nome         VARCHAR(255)   Nome da categoria (obrigatório)
+  descricao    TEXT           Descrição (opcional)
+  created_at   TIMESTAMP      Data de criação
+  updated_at   TIMESTAMP      Data de atualização
 
-# -------------------------------------------------------
-# 🎯 Rotas da Aplicação (Laravel)
-# -------------------------------------------------------
-# GET     /categorias               -> index
-# GET     /categorias/create        -> create
-# POST    /categorias               -> store
-# GET     /categorias/{id}/edit     -> edit
-# PUT     /categorias/{id}          -> update
-# DELETE  /categorias/{id}          -> destroy
+------------------------------------------------------------------------
 
+## 🎯 Rotas da Aplicação
 
+  ------------------------------------------------------------------------
+  Método   URI                      Ação      Descrição
+  -------- ------------------------ --------- ----------------------------
+  GET      /categorias              index     Lista categorias
 
-# -------------------------------------------------------
-# 🔧 Comandos Úteis
-# -------------------------------------------------------
+  GET      /categorias/create       create    Formulário de criação
 
-# Status dos containers
+  POST     /categorias              store     Salva nova categoria
+
+  GET      /categorias/{id}/edit    edit      Formulário de edição
+
+  PUT      /categorias/{id}         update    Atualiza categoria
+
+  DELETE   /categorias/{id}         destroy   Exclui categoria
+  ------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## 🔧 Comandos Úteis
+
+### **Gerenciar Containers Docker**
+
+``` bash
 docker-compose ps
-
-# Parar containers
 docker-compose stop
-
-# Iniciar containers parados
 docker-compose start
-
-# Remover containers
 docker-compose down
-
-# Logs em tempo real
 docker-compose logs -f
-
-# Acessar o container app
 docker-compose exec app bash
-
-# Acessar MySQL
 docker-compose exec db mysql -u laravel -p
+```
 
+### **Comandos Artisan**
 
-# Laravel Artisan
+``` bash
 docker-compose exec app php artisan cache:clear
 docker-compose exec app php artisan view:clear
 docker-compose exec app php artisan config:clear
 docker-compose exec app php artisan route:list
 
-# Criar nova migration
 docker-compose exec app php artisan make:migration nome_da_migration
-
-# Criar controller
 docker-compose exec app php artisan make:controller NomeController
-
-# Criar model
 docker-compose exec app php artisan make:model NomeModel
 
-# Reverter migration
 docker-compose exec app php artisan migrate:rollback
-
-# Recriar tabelas
 docker-compose exec app php artisan migrate:fresh
+```
 
+------------------------------------------------------------------------
 
+## 📚 Arquivos de Configuração
 
-# -------------------------------------------------------
-# 📚 Arquivos de Configuração
-# -------------------------------------------------------
-# docker-compose.yml → Orquestra app, webserver (nginx), db (mysql)
-# dockerfile → Imagem PHP personalizada
-# nginx.conf → Configuração do Nginx
+### **docker-compose.yml**
+
+Orquestra: - app (Laravel + PHP 8.2) - webserver (Nginx) - db (MySQL
+8.0)
+
+### **dockerfile**
+
+Imagem personalizada para PHP com extensões necessárias.
+
+### **nginx.conf**
+
+Configuração do Nginx para servir a aplicação Laravel.
 
