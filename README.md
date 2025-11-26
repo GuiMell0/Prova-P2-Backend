@@ -147,40 +147,18 @@ docker-compose exec app chmod -R 777 storage bootstrap/cache
     ├── nginx.conf
     ├── .env
     └── README.md
-
-------------------------------------------------------------------------
-
-## 🗄️ Estrutura do Banco de Dados
-
-**Tabela: categorias**
-
-  Campo        Tipo           Descrição
-  ------------ -------------- ---------------------------------
-  id           BIGINT         Chave primária, auto incremento
-  nome         VARCHAR(255)   Nome da categoria (obrigatório)
-  descricao    TEXT           Descrição (opcional)
-  created_at   TIMESTAMP      Data de criação
-  updated_at   TIMESTAMP      Data de atualização
-
 ------------------------------------------------------------------------
 
 ## 🎯 Rotas da Aplicação
 
-  ------------------------------------------------------------------------
-  Método   URI                      Ação      Descrição
-  -------- ------------------------ --------- ----------------------------
-  GET      /categorias              index     Lista categorias
-
-  GET      /categorias/create       create    Formulário de criação
-
-  POST     /categorias              store     Salva nova categoria
-
-  GET      /categorias/{id}/edit    edit      Formulário de edição
-
-  PUT      /categorias/{id}         update    Atualiza categoria
-
-  DELETE   /categorias/{id}         destroy   Exclui categoria
-  ------------------------------------------------------------------------
+| Método | URI                     | Ação    | Descrição               |
+|--------|--------------------------|---------|-------------------------|
+| GET    | /categorias              | index   | Lista categorias        |
+| GET    | /categorias/create       | create  | Formulário de criação   |
+| POST   | /categorias              | store   | Salva nova categoria    |
+| GET    | /categorias/{id}/edit    | edit    | Formulário de edição    |
+| PUT    | /categorias/{id}         | update  | Atualiza categoria      |
+| DELETE | /categorias/{id}         | destroy | Exclui categoria        |
 
 ------------------------------------------------------------------------
 
